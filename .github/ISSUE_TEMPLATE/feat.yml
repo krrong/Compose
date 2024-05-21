@@ -1,0 +1,12 @@
+name: "⚙️  Feature"
+body:
+  - type: textarea
+    attributes:
+      label: Detail of function
+  - type: textarea
+    attributes:
+      label: 🌟 Goal
+  - type: textarea
+    attributes:
+      label: Reference Links
+
