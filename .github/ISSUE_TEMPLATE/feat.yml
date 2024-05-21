@@ -1,4 +1,5 @@
 name: "⚙️  Feature"
+description: "add feature"
 body:
   - type: textarea
     attributes:
