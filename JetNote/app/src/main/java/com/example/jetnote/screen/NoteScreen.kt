@@ -36,6 +36,7 @@ import com.example.jetnote.components.NoteButton
 import com.example.jetnote.components.NoteInputText
 import com.example.jetnote.data.NotesDataSource
 import com.example.jetnote.model.Note
+import com.example.jetnote.util.formatDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -143,10 +144,10 @@ fun NoteRow(
                 text = note.description,
                 style = MaterialTheme.typography.titleSmall
             )
-//            Text(
-//                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-//                style = MaterialTheme.typography.labelMedium
-//            )
+            Text(
+                text = formatDate(note.entryDate.time),
+                style = MaterialTheme.typography.labelMedium
+            )
         }
     }
 }
