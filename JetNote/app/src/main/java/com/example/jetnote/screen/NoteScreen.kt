@@ -36,7 +36,6 @@ import com.example.jetnote.components.NoteButton
 import com.example.jetnote.components.NoteInputText
 import com.example.jetnote.data.NotesDataSource
 import com.example.jetnote.model.Note
-import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -125,15 +124,16 @@ fun NoteRow(
 ) {
     Surface(
         modifier = modifier
-                .padding(4.dp)
-                .clip(RoundedCornerShape(topEnd = 33.dp, bottomStart = 33.dp))
-                .fillMaxWidth(),
+            .padding(4.dp)
+            .clip(RoundedCornerShape(topEnd = 33.dp, bottomStart = 33.dp))
+            .fillMaxWidth(),
         color = Color(0xFFDFE6EB),
-        tonalElevation = 6.dp) {
+        tonalElevation = 6.dp
+    ) {
         Column(
             modifier
-                    .clickable { onNoteClicked(note) }
-                    .padding(horizontal = 14.dp, vertical = 6.dp),
+                .clickable { onNoteClicked(note) }
+                .padding(horizontal = 14.dp, vertical = 6.dp),
             horizontalAlignment = Alignment.Start) {
             Text(
                 text = note.title,
@@ -143,10 +143,10 @@ fun NoteRow(
                 text = note.description,
                 style = MaterialTheme.typography.titleSmall
             )
-            Text(
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-                style = MaterialTheme.typography.labelMedium
-            )
+//            Text(
+//                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+//                style = MaterialTheme.typography.labelMedium
+//            )
         }
     }
 }
