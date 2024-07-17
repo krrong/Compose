@@ -82,7 +82,7 @@ dependencies {
     //May need okkhttp also
 
     // Dagger - Hilt
-    kapt ("com.google.dagger:hilt-android-compiler:$2.39")
+    kapt (libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.lifecycle.viewmodel)
     kapt (libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
