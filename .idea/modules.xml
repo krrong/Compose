@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JetTrivia.iml" filepath="$PROJECT_DIR$/.idea/modules/JetTrivia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/JetTrivia.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/JetTrivia.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/JetTrivia.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/JetTrivia.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>
