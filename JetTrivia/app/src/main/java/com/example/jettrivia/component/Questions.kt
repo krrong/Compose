@@ -1,10 +1,12 @@
 package com.example.jettrivia.component
 
 import android.util.Log
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Surface
@@ -12,6 +14,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.text.ParagraphStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -40,6 +45,7 @@ fun Questions(viewModel: QuestionsViewModel) {
 @Preview(showBackground = true)
 @Composable
 fun QuestionsDisplay() {
+    val pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 1f)
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -52,11 +58,12 @@ fun QuestionsDisplay() {
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
         ) {
+            QuestionTracker()
+            DrawDottedLine(pathEffect)
         }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
 fun QuestionTracker(counter: Int = 10, outOf: Int = 100) {
     Text(
@@ -64,7 +71,7 @@ fun QuestionTracker(counter: Int = 10, outOf: Int = 100) {
             withStyle(style = ParagraphStyle(textIndent = TextIndent.None)) {
                 withStyle(
                     style = SpanStyle(
-                        color = AppColors.mLightPurple,
+                        color = AppColors.mLightGray,
                         fontWeight = FontWeight.Bold,
                         fontSize = 27.sp
                     )
@@ -72,7 +79,7 @@ fun QuestionTracker(counter: Int = 10, outOf: Int = 100) {
                     append("Question $counter/")
                     withStyle(
                         style = SpanStyle(
-                            color = AppColors.mLightGray,
+                            color = AppColors.mLightPurple,
                             fontWeight = FontWeight.Light,
                             fontSize = 14.sp
                         )
@@ -84,4 +91,20 @@ fun QuestionTracker(counter: Int = 10, outOf: Int = 100) {
         },
         modifier = Modifier.padding(20.dp)
     )
+}
+
+@Composable
+fun DrawDottedLine(pathEffect: PathEffect) {
+    Canvas(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(1.dp)
+    ) {
+        drawLine(
+            color = AppColors.mLightGray,
+            start = Offset(0f, 0f),
+            end = Offset(size.width, 0f),
+            pathEffect = pathEffect
+        )
+    }
 }
