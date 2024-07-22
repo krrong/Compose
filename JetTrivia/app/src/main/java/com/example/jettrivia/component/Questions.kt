@@ -46,7 +46,6 @@ import androidx.compose.ui.unit.sp
 import com.example.jettrivia.model.QuestionItem
 import com.example.jettrivia.screen.QuestionsViewModel
 import com.example.jettrivia.util.AppColors
-import kotlinx.coroutines.selects.select
 
 @Composable
 fun Questions(viewModel: QuestionsViewModel) {
@@ -306,7 +305,7 @@ fun ShowProgress(score: Int = 12) {
                 containerColor = Color.Transparent,
                 disabledContainerColor = Color.Transparent
             ),
-            onClick = { /*TODO*/ }) {
+            onClick = { }) {
             Text(
                 text = (score * 10).toString(),
                 modifier = Modifier
