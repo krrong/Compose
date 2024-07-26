@@ -23,6 +23,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,13 +51,14 @@ import com.example.jettrivia.util.AppColors
 @Composable
 fun Questions(viewModel: QuestionsViewModel) {
     val questions = viewModel.data.value.data?.toMutableList()
-    val questionIndex = remember {
-        mutableStateOf(0)
-    }
+    val questionsIndexState by viewModel.page.collectAsState()
 
     if (viewModel.data.value.loading == true) {
         CircularProgressIndicator()
     } else {
+        val questionIndex = remember {
+            mutableStateOf(questionsIndexState)
+        }
         val question = questions?.get(questionIndex.value)
 
         if (questions != null) {
@@ -191,7 +193,10 @@ fun QuestionsDisplay(
                     }
                 }
                 Button(
-                    onClick = { onNextClicked(questionIndex.value) },
+                    onClick = {
+                        onNextClicked(questionIndex.value)
+                        viewModel.savePage(questionIndex.value)
+                    },
                     modifier = Modifier
                         .padding(3.dp)
                         .align(Alignment.CenterHorizontally),

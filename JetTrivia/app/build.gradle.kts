@@ -89,6 +89,9 @@ dependencies {
     implementation(libs.retrofit)
     //GSON converter
     implementation(libs.converter.gson)
+
+    implementation("androidx.datastore:datastore-preferences-rxjava2:1.1.1")
+    implementation("androidx.datastore:datastore-preferences-rxjava3:1.1.1")
 }
 
 kapt {
